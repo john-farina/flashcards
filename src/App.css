@@ -1,12 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+:root {
+    /* DIMENSIONS */
+    --cardWidth: 400px;
+    --cardHeight: calc(var(--cardWidth) / 2);
+    --headFontSize: 1.8rem;
+    --fontSize: calc(var(--headFontSize) - 0.7rem);
+    --frontFontSize: calc(var(--fontSize) + 0.2rem);
+}
+:root {
+    /* COLOR */
+    --whiteCard: rgb(255, 254, 246);
+    --transparentTest: rgba(0, 0, 0, 0%);
+}
+
 body {
     width: 100%;
     background-color: rgb(61, 60, 66);
-    color: rgb(255, 254, 246);
+    color: black;
+    font-family: 'Neucha', cursive;
 }
 #root {
-    background-color: red;
+    background-color: rgb(55, 55, 55);
     margin: 0;
-
     margin-left: -6px;
 }
 .App {
@@ -20,21 +36,27 @@ body {
     display: flex;
     gap: 5px;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--whiteCard);
     color: black;
-    width: 400px;
-    height: 200px;
+    width: var(--cardWidth);
+    height: var(--cardHeight);
 }
 .flashcardHeader {
-    background-color: green;
+    font-size: var(--headFontSize);
+    /* background-color: var(--transparentTest); */
     margin-bottom: 0;
+    margin-top: 10px;
     text-align: center;
+    border: solid blue 1px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
 }
 .flashcardText {
+    font-size: var(--fontSize);
     padding: 10px;
-
     margin-top: 0;
-    background-color: blue;
+    background-color: var(--transparentTest);
     height: 100%;
     overflow-y: scroll;
 }
@@ -42,5 +64,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    font-size: var(--frontFontSize);
 }

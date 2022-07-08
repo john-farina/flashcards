@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Card({ frontText, backText }) {
+function Card({ frontText, backText, headerText }) {
     const [frontStyle, changeFront] = useState({
         display: 'flex',
     });
@@ -24,7 +24,7 @@ function Card({ frontText, backText }) {
     return (
         <>
             <div onClick={changeView} className="flashcard">
-                <h2 className="flashcardHeader">Header</h2>
+                <h2 className="flashcardHeader">{headerText}</h2>
                 <p className="flashcardText frontText" style={frontStyle}>
                     {frontText}
                 </p>
