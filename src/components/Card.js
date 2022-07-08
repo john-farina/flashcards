@@ -4,6 +4,8 @@ function Card({ frontText, backText, headerText }) {
     const [cardStyle, setCard] = useState({
         display: 'flex',
         position: 'relative',
+        animation: '',
+        //  flashcardAnimate 0.3s
     });
     const [buttonStyle] = useState({
         position: 'absolute',
