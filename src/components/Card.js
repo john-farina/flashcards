@@ -1,36 +1,61 @@
 import { useState } from 'react';
 
 function Card({ frontText, backText, headerText }) {
-    const [frontStyle, changeFront] = useState({
+    const [cardStyle, setCard] = useState({
+        display: 'flex',
+        position: 'relative',
+    });
+    const [buttonStyle] = useState({
+        position: 'absolute',
+        right: '0',
+        marginTop: '2%',
+        marginRight: '2%',
+        width: '30px',
+        height: '30px',
+    });
+    const [frontStyle, setFront] = useState({
         display: 'flex',
     });
-    const [backStyle, changeBack] = useState({
+    const [backStyle, setBack] = useState({
         display: 'none',
     });
-    const [frontIsOpen, changeOpen] = useState(true);
+    const [frontIsOpen, setOpen] = useState(true);
+    const [bottomText, setBottom] = useState('FRONT');
 
     function changeView() {
         if (frontIsOpen) {
-            changeFront({ display: 'flex' });
-            changeBack({ display: 'none' });
-            changeOpen(false);
+            setFront({ display: 'flex' });
+            setBack({ display: 'none' });
+            setBottom('FRONT');
+            setOpen(false);
         } else {
-            changeFront({ display: 'none' });
-            changeBack({ display: 'flex' });
-            changeOpen(true);
+            setFront({ display: 'none' });
+            setBack({ display: 'flex' });
+            setBottom('BACK');
+            setOpen(true);
         }
+    }
+
+    function deleteCard() {
+        setCard({
+            display: 'none',
+        });
     }
 
     return (
         <>
-            <div onClick={changeView} className="flashcard">
+            <div style={cardStyle} onClick={changeView} className="flashcard">
                 <h2 className="flashcardHeader">{headerText}</h2>
+                <button onClick={deleteCard} style={buttonStyle}>
+                    X
+                </button>
                 <p className="flashcardText frontText" style={frontStyle}>
                     {frontText}
                 </p>
                 <p className="flashcardText backText" style={backStyle}>
                     {backText}
                 </p>
+                <p className="bottomText">{bottomText}</p>
             </div>
         </>
     );

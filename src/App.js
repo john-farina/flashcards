@@ -3,7 +3,7 @@ import Card from './components/Card';
 import './App.css';
 
 function App() {
-    const [cards, changeCards] = useState([
+    const [cards, setCards] = useState([
         {
             id: 1,
             header: 'Index Cards by: jf',
@@ -19,9 +19,13 @@ function App() {
     ]);
 
     function addNewCard() {
+        const header = prompt('Header');
         const front = prompt('front card');
         const back = prompt('back card');
-        changeCards((old) => [...old, { front: front, back: back }]);
+        setCards((old) => [
+            ...old,
+            { header: header, front: front, back: back },
+        ]);
     }
 
     return (
@@ -36,7 +40,7 @@ function App() {
                     />
                 );
             })}
-            <button onClick={addNewCard}>click</button>
+            <button onClick={addNewCard}>+</button>
         </div>
     );
 }
